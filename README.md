@@ -26,8 +26,14 @@ Celui contiendrait :
 
 Toutes les données seront stockées dans une base de données SQL postgresql
 
+### Package
 
-# Getting Started with Create React App
+- Utilisation de React Bootstrap pour les composants
+https://react-bootstrap.github.io/
+
+
+
+### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
