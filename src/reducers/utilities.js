@@ -2,8 +2,8 @@
 import {HANDLE_FIELD_CHANGE} from '../actions/utilities';
 
 export const initialState = {
-    email:'',
-    password:'',
+    email: '',
+    password: '',
 };
 
 const reducer = (state = initialState, action = {}) => {

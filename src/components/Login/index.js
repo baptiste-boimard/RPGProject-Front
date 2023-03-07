@@ -13,14 +13,14 @@ function Login() {
     
     // ==CALL UTILITIES STORE==
     const {email, password} = useSelector((state) => state.utilities);
-
+    console.log('init',email, password);
     /**
      * Controlled fields
      * @changeCurrentField Change input state value 
      */
-    const handleFieldChange = (e) => {
+    const handleChange = (e) => {
         dispatch(handleFieldChange(e.target.value, e.target.name));
-        console.log(e.target.value, e.target.name);
+        console.log(e.target.name,e.target.value);
     };
 
 
@@ -44,6 +44,7 @@ function Login() {
                       value={email}
                       name="email"
                       title="email"
+                      onChange={handleChange}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -53,6 +54,7 @@ function Login() {
                       value={password}
                       name="password"
                       title="password"
+                      onChange={handleChange}
         />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
