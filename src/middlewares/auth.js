@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // ==--IMPORT ACTION--==
-import { SUBMIT_LOGIN } from '../actions/login';
+import { SUBMIT_LOGIN, SUBMIT_SIGNUP } from '../actions/login';
 
 /** Instance of AXIOS with options */
 const instance = axios.create({
@@ -28,8 +28,24 @@ const auth = (store) => (next) => (action) => {
           console.log(error);
         });
       break;
-    default:
-      next(action);
+      case SUBMIT_SIGNUP:
+        console.log(action.email, action.password);
+        
+        instance.post('/signup', {
+          email: action.email,
+          password: action.password,
+        })
+        .then((response) => {
+          //action en cas de réponse
+          console.log(response);
+        })
+        .catch((error) => {
+          //action en cas d'erreur
+          console.log(error);
+        });
+        break;
+      default:
+          next(action);
   }
 };
 
