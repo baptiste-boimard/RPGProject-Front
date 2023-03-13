@@ -1,6 +1,6 @@
 //==--IMPORT ACTIONS--==
 
-import { TOGGLE_LOGIN, TOGGLE_SIGNUP } from "../actions/login";
+import { CLOSE_LOGIN, CLOSE_SIGNUP, TOGGLE_LOGIN, TOGGLE_SIGNUP} from "../actions/login";
 
 export const initialState = {
   logged: false,
@@ -24,6 +24,22 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         isOpenLogin: !state.isOpenLogin,
+      };
+    }
+
+    /** close signup modal */
+    case CLOSE_SIGNUP: {
+      return {
+        ...state,
+        isOpenSignup: false,
+      };
+    }
+
+    /** close login modal */
+    case CLOSE_LOGIN: {
+      return {
+        ...state,
+        isOpenLogin: false,
       };
     }
 

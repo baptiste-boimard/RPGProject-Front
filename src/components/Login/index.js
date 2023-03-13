@@ -7,7 +7,7 @@ import {Form} from 'react-bootstrap';
 
 
 // ==IMPORT ACTION==
-import {toggleSignup, toggleLogin, submitLogin, submitSignup} from '../../actions/login';
+import {toggleSignup, toggleLogin, submitLogin, submitSignup, closeLogin, closeSignup} from '../../actions/login';
 import {handleFieldChange} from '../../actions/utilities';
 
 
@@ -19,11 +19,7 @@ function Login() {
 
   // ==CALL STORE==
   const {email, password} = useSelector((state) => state.utilities);
-  const {logged, isOpenSignup, isOpenLogin} = useSelector((state) => state.login);
-
-
-console.log(isOpenSignup, isOpenLogin);
-
+  const {isOpenSignup, isOpenLogin} = useSelector((state) => state.login);
 
   // == ACTIONS ==
   /**
@@ -38,6 +34,7 @@ console.log(isOpenSignup, isOpenLogin);
  * @handleToggleSignup open a modal with signup form
  */
   const handleToggleSignup = () => {
+    dispatch(closeLogin());
     dispatch(toggleSignup());
   };
   /**
@@ -45,6 +42,7 @@ console.log(isOpenSignup, isOpenLogin);
  * @returns open a modal with login form
  */
   const handleToggleLogin = () => {
+    dispatch(closeSignup());
     dispatch(toggleLogin());
   };
   /**
@@ -63,7 +61,20 @@ console.log(isOpenSignup, isOpenLogin);
   e.preventDefault();
   dispatch(submitSignup(email, password));
   };
-
+  /**
+ * Clicking close button on signup modal
+ * @handleCloseSignup close signup modal
+ */
+  const handleCloseSignup = (e) => {
+    dispatch(closeSignup());
+  };
+  /**
+ * Clicking close button on login modal
+ * @handleCloseSignup close login modal
+ */
+  const handleCloseLogin = (e) => {
+    dispatch(closeLogin());
+  };
 
 
 
@@ -97,7 +108,7 @@ console.log(isOpenSignup, isOpenLogin);
         style={{ display: 'block', position: 'initial' }}
         >
           <Modal.Dialog>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onClick={handleCloseSignup}>
               <Modal.Title>Inscription</Modal.Title>
             </Modal.Header>
 
@@ -128,7 +139,7 @@ console.log(isOpenSignup, isOpenLogin);
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="secondary">Annuler</Button>
+              <Button variant="secondary" onClick={handleCloseSignup}>Annuler</Button>
               <Button variant="primary">S'incrire</Button>
             </Modal.Footer>
           </Modal.Dialog>
@@ -143,7 +154,7 @@ console.log(isOpenSignup, isOpenLogin);
         style={{ display: 'block', position: 'initial' }}
         >
           <Modal.Dialog>
-            <Modal.Header closeButton>
+            <Modal.Header closeButton onClick={handleCloseLogin}>
               <Modal.Title>Connexion</Modal.Title>
             </Modal.Header>
 
@@ -174,7 +185,7 @@ console.log(isOpenSignup, isOpenLogin);
             </Modal.Body>
 
             <Modal.Footer>
-              <Button variant="secondary">Annuler</Button>
+              <Button variant="secondary" onClick={handleCloseLogin}>Annuler</Button>
               <Button variant="primary">Se Connecter</Button>
             </Modal.Footer>
           </Modal.Dialog>
