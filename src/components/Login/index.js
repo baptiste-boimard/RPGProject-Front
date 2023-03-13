@@ -51,7 +51,7 @@ function Login() {
    */
   const handleSubmitSignup = (e) => {
     e.preventDefault();
-    dispatch(submitLogin(email, password));
+    dispatch(submitSignup(email, password));
   };
   /**
  * Clicking submit login button
@@ -59,7 +59,7 @@ function Login() {
  */
   const handleSubmitLogin = (e) => {
   e.preventDefault();
-  dispatch(submitSignup(email, password));
+  dispatch(submitLogin(email, password));
   };
   /**
  * Clicking close button on signup modal
@@ -113,7 +113,7 @@ function Login() {
             </Modal.Header>
 
             <Modal.Body>
-              <Form onSubmit={handleSubmitSignup}>
+              <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Control type="email"
                                 placeholder="Entrer votre Email"
@@ -140,7 +140,7 @@ function Login() {
 
             <Modal.Footer>
               <Button variant="secondary" onClick={handleCloseSignup}>Annuler</Button>
-              <Button variant="primary">S'incrire</Button>
+              <Button variant="primary" onClick={handleSubmitSignup}>S'incrire</Button>
             </Modal.Footer>
           </Modal.Dialog>
         </div>
@@ -153,13 +153,13 @@ function Login() {
         className="modal show"
         style={{ display: 'block', position: 'initial' }}
         >
-          <Modal.Dialog>
+          <Modal.Dialog >
             <Modal.Header closeButton onClick={handleCloseLogin}>
               <Modal.Title>Connexion</Modal.Title>
             </Modal.Header>
 
             <Modal.Body>
-              <Form onSubmit={handleSubmitLogin}>
+              <Form>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Control type="email"
                                   placeholder="Entrer votre Email"
@@ -186,7 +186,7 @@ function Login() {
 
             <Modal.Footer>
               <Button variant="secondary" onClick={handleCloseLogin}>Annuler</Button>
-              <Button variant="primary">Se Connecter</Button>
+              <Button variant="primary" onClick={handleSubmitLogin}>Se Connecter</Button>
             </Modal.Footer>
           </Modal.Dialog>
         </div>
