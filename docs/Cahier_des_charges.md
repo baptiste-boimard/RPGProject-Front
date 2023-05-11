@@ -20,7 +20,7 @@ niveaux de difficulté font qu'il sera accessible de 5 à 99 ans.
 
 - Différents niveaux de différentes difficulté seront proposés à l'ensemble des
   joueurs avec un système de filtre.
-- Un éediteur de niveau permettra aux joueurs de créer ces propres niveaux et les
+- Un éditeur de niveau permettra aux joueurs de créer ces propres niveaux et les
   proposer aux autres. 
 - L'application comprendra un système de création de compte afin de retrouver votre
   avancement dans les différents niveaux joués et les différents niveaux crées.
